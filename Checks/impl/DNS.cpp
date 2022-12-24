@@ -6,18 +6,18 @@
 #include <vector>
 
 DWORD get_service_pid(const std::string& service_name) { // For some reason it throws errors and sometimes it works??????
-    //SC_HANDLE scm = OpenSCManagerA(nullptr, nullptr, NULL);
-    //SC_HANDLE sc = OpenServiceA(scm, (LPCSTR)service_name.c_str(), SERVICE_QUERY_STATUS);
+    SC_HANDLE scm = OpenSCManagerA(nullptr, nullptr, NULL);
+    SC_HANDLE sc = OpenServiceA(scm, (LPCSTR)service_name.c_str(), SERVICE_QUERY_STATUS);
 
     SERVICE_STATUS_PROCESS ssp = { 0 };
     DWORD bytes_needed = 0;
-    //QueryServiceStatusEx(sc, SC_STATUS_PROCESS_INFO, reinterpret_cast<LPBYTE>(&ssp), sizeof(ssp),
-    //    &bytes_needed);
+    QueryServiceStatusEx(sc, SC_STATUS_PROCESS_INFO, reinterpret_cast<LPBYTE>(&ssp), sizeof(ssp),
+        &bytes_needed);
 
-    //CloseServiceHandle(sc);
-    //CloseServiceHandle(scm);
+    CloseServiceHandle(sc);
+    CloseServiceHandle(scm);
 
-    return 3080;
+    return ssp.dwProcessId;
 }
 
 void checks::start_dns_check()
