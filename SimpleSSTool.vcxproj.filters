@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Logger">
+      <UniqueIdentifier>{9a12737a-1a85-4fa0-bd7e-46355c036504}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Checks">
+      <UniqueIdentifier>{d4a58a89-dca8-4084-86ac-68f87234551f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Checks\Version">
+      <UniqueIdentifier>{d86d750d-eedf-4cc2-bb0f-ee8139b5cc71}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Checks\XRay">
+      <UniqueIdentifier>{45c34234-794b-4a7c-a847-ed467e3ebd7f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Checks\JNativeHook">
+      <UniqueIdentifier>{d952e8b3-a6ab-47b9-adff-185fff170f45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\CheckThread">
+      <UniqueIdentifier>{76e92d72-3918-4bff-8574-1dacb38854b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Checks\ScanJavaw">
+      <UniqueIdentifier>{9b93dd58-c225-4b04-95c1-fd78fae9c0a4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="SimpleSSTool.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Logger\Logger.cpp">
+      <Filter>Source Files\Logger</Filter>
+    </ClCompile>
+    <ClCompile Include="Checks\impl\Xray_check.cpp">
+      <Filter>Source Files\Checks\XRay</Filter>
+    </ClCompile>
+    <ClCompile Include="Checks\Check.cpp">
+      <Filter>Source Files\CheckThread</Filter>
+    </ClCompile>
+    <ClCompile Include="Checks\impl\JNativeHook.cpp">
+      <Filter>Source Files\Checks\JNativeHook</Filter>
+    </ClCompile>
+    <ClCompile Include="Checks\impl\Javaw.cpp">
+      <Filter>Source Files\Checks\ScanJavaw</Filter>
+    </ClCompile>
+    <ClCompile Include="Checks\impl\Version.cpp">
+      <Filter>Source Files\Checks\Version</Filter>
+    </ClCompile>
+    <ClCompile Include="Checks\impl\DNS.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Utility\Utility.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="SimpleSSTool.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Logger\Logger.h">
+      <Filter>Source Files\Logger</Filter>
+    </ClInclude>
+    <ClInclude Include="Checks\Check.h">
+      <Filter>Source Files\CheckThread</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility\Utility.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
