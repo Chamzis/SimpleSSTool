@@ -15,7 +15,7 @@ int main() {
     All checks need to be put in a single namespace to be more tidy (But im to lazy to do that)
     */
 
-    using namespace std::this_thread;    
+    using namespace std::this_thread;  
     using namespace std::chrono_literals; 
     
     const auto h_console = GetStdHandle(STD_OUTPUT_HANDLE); // Setting the variables up

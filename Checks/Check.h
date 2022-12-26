@@ -11,4 +11,5 @@ namespace checks {
 	void start_jnative_check();
 	void start_version_check();
 	void start_xray_check();
+	void start_pcasvc_check();
 }

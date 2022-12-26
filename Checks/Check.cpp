@@ -24,6 +24,7 @@ auto start_checks() -> void
 	checks::start_version_check();
 	checks::start_dns_check();
 	checks::start_javaw_scanner();
+	checks::start_pcasvc_check();
 
 	const auto h_console = GetStdHandle(STD_OUTPUT_HANDLE); 
 	SetConsoleTextAttribute(h_console, 1);
@@ -48,5 +49,5 @@ auto start_checks() -> void
 	std::cout << "(" << time / 1000 << " seconds)" << std::endl;
 	SetConsoleTextAttribute(h_console, 7);
 
-	system("pause"); //
+	system("pause");
 }

@@ -1,2 +1,5 @@
-﻿  DNS.cpp
-  SimpleSSTool.vcxproj -> C:\Users\Pavilion\Desktop\SimpleSSTool\x64\Debug\SimpleSSTool.exe
+﻿  JNativeHook.cpp
+  Utility.cpp
+  Generating Code...
+C:\Users\Pavilion\Documents\GitHub\SimpleSSTool\Utility\Utility.cpp(34): warning C4172: returning address of local variable or temporary: wchar
+  SimpleSSTool.vcxproj -> C:\Users\Pavilion\Documents\GitHub\SimpleSSTool\x64\Debug\SimpleSSTool.exe

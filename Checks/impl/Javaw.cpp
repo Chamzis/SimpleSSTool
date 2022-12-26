@@ -61,4 +61,6 @@ void checks::start_javaw_scanner()
             Sleep(10);
         }
     }
+
+    CloseHandle(handle);
 }

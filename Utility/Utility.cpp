@@ -2,48 +2,49 @@
 #include <string>
 #include <Windows.h>
 #include "../Utility/Utility.h"
+#include <TlHelp32.h>
+#include <iostream>
+#include <tlhelp32.h>
+#include <tchar.h>
 
 using namespace std;
 
-std::string wchar_t2string(const wchar_t* wchar)
-{
-    string str = "";
-    int index = 0;
-    while (wchar[index] != 0)
-    {
-        str += (char)wchar[index];
-        ++index;
+DWORD util::get_process_pid(const std::string& process_name) {
+    PROCESSENTRY32 process_info;
+    process_info.dwSize = sizeof(process_info);
+
+    HANDLE snapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, NULL);
+    if (snapshot == INVALID_HANDLE_VALUE)
+        return 0;
+
+    Process32First(snapshot, &process_info);
+    if (!process_name.compare((char*)process_info.szExeFile)) {
+        CloseHandle(snapshot);
+        return process_info.th32ProcessID;
     }
-    return str;
+
+    while (Process32Next(snapshot, &process_info)) {
+        if (!process_name.compare((char*)process_info.szExeFile)) {
+            CloseHandle(snapshot);
+            return process_info.th32ProcessID;
+        }
+    }
+
+    CloseHandle(snapshot);
+
+    return 0;
 }
 
-wchar_t* string2wchar_t(const string& str)
-{
-    wchar_t wchar[260];
-    int index = 0;
-    while (index < str.size())
-    {
-        wchar[index] = (wchar_t)str[index];
-        ++index;
-    }
-    wchar[index] = 0;
-    return wchar;
-}
+DWORD util::get_service_pid(const std::string& service_name) { // For some reason it throws errors and sometimes it works??????
+    const auto hScm = OpenSCManagerA(nullptr, nullptr, NULL);
+    const auto hSc = OpenServiceA(hScm, (LPCSTR)service_name.c_str(), SERVICE_QUERY_STATUS);
 
-std::vector<std::string> util::files_in_folder(std::string folder)
-{
-    vector<string> names;
-    string search_path = folder + "/*.*";
-    WIN32_FIND_DATA fd;
-    HANDLE hFind = ::FindFirstFile(string2wchar_t(search_path), &fd);
+    SERVICE_STATUS_PROCESS ssp = {};
+    DWORD bytesNeeded = 0;
+    QueryServiceStatusEx(hSc, SC_STATUS_PROCESS_INFO, reinterpret_cast<LPBYTE>(&ssp), sizeof(ssp), &bytesNeeded);
 
-    if (hFind != INVALID_HANDLE_VALUE) {
-        do {
-            if (!(fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY))
-                names.push_back(wchar_t2string(fd.cFileName));
+    CloseServiceHandle(hSc);
+    CloseServiceHandle(hScm);
 
-        } while (FindNextFile(hFind, &fd));
-        FindClose(hFind);
-    }
-    return names;
+    return ssp.dwProcessId;
 }

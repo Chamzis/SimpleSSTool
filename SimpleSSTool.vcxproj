@@ -143,6 +143,7 @@
   <ItemGroup>
     <ClCompile Include="Checks\Check.cpp" />
     <ClCompile Include="Checks\impl\DNS.cpp" />
+    <ClCompile Include="Checks\impl\PcaSvc.cpp" />
     <ClCompile Include="Checks\impl\Javaw.cpp" />
     <ClCompile Include="Checks\impl\JNativeHook.cpp" />
     <ClCompile Include="SimpleSSTool.cpp" />
