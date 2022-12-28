@@ -8,8 +8,6 @@ using namespace std;
 void checks::start_time_check() {
 	logger("Starting Time Check...", log_type::INFO);
 
-	std::cout << util::get_start_time(util::get_process_pid("explorer.exe"))[0] << std::endl;
-
 	if (util::get_start_time(util::get_process_pid("explorer.exe"))[1] < 30 && util::get_start_time(util::get_process_pid("explorer.exe"))[2] == 0) { // 30 Minutes
 		logger("Explorer started under 30 minutes!", log_type::WARNING);
 	}
