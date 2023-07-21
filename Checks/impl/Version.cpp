@@ -9,8 +9,9 @@ using namespace std;
 
 void checks::start_version_check() 
 {
-	logger("Starting Version check", log_type::INFO);
+	logger("Starting Version Check...", log_type::INFO);
 
+    bool p = true;
     vector<std::string> hack_names = {
         "Rise",
         "Wurst",
@@ -27,6 +28,12 @@ void checks::start_version_check()
     if (listFiles.size() != 0)
         for (string s : listFiles)
             for (string ss : hack_names)                         // Most cancerous code I have ever written
-                if (s.find(ss) != std::string::npos)
+                if (s.find(ss) != std::string::npos) {
                     logger("Found Hack in Versions Folder!", log_type::WARNING);
+                    p = false;
+                }
+
+    if (p)
+        checks::passed;
+                    
 }

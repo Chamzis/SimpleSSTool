@@ -5,6 +5,8 @@
 #include <windows.h>
 #include <chrono>
 
+inline int passed = 0;
+
 __int64 currentTimeMillis() {
 	FILETIME f;
 	GetSystemTimeAsFileTime(&f);
@@ -19,12 +21,12 @@ auto start_checks() -> void
 
 	system("CLS");
 
+	checks::start_time_check();
 	checks::start_xray_check();
 	checks::start_jnative_check();
 	checks::start_version_check();
 	checks::start_dns_check();
 	checks::start_javaw_scanner();
-	checks::start_pcasvc_check();
 
 	const auto h_console = GetStdHandle(STD_OUTPUT_HANDLE); 
 	SetConsoleTextAttribute(h_console, 1);
@@ -49,5 +51,15 @@ auto start_checks() -> void
 	std::cout << "(" << time / 1000 << " seconds)" << std::endl;
 	SetConsoleTextAttribute(h_console, 7);
 
-	system("pause");
+	std::cout << "User has passed ";
+	SetConsoleTextAttribute(h_console, 2);
+	std::cout << checks::passed << " ";
+	SetConsoleTextAttribute(h_console, 7);
+	std::cout << "checks out of ";
+	SetConsoleTextAttribute(h_console, 2);
+	std::cout << "8";
+	SetConsoleTextAttribute(h_console, 7);
+	std::cout << "!" << std::endl;
+
+	system("pause"); 
 }

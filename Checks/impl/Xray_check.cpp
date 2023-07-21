@@ -21,6 +21,7 @@ void checks::start_xray_check()
 {
 	logger("Starting XRay Check", log_type::INFO);
     
+    bool p = true;
     vector<string> listFiles; 
     char* appdata_path;
     size_t len;
@@ -31,6 +32,11 @@ void checks::start_xray_check()
 
     if (listFiles.size() != 0) 
         for (string s : listFiles) 
-            if (s.find("xray") != std::string::npos || s.find("Xray") != std::string::npos || s.find("XRay") != std::string::npos) 
+            if (s.find("xray") != std::string::npos || s.find("Xray") != std::string::npos || s.find("XRay") != std::string::npos) {
                 logger("Found XRay in %appdata% ", log_type::WARNING);
+                p = false;
+            }
+      
+    if (p)
+        checks::passed++;
 }

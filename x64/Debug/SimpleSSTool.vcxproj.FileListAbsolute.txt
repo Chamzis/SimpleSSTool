@@ -1,2 +1,1 @@
 C:\Users\Pavilion\Desktop\SimpleSSTool\x64\Debug\SimpleSSTool.exe
-C:\Users\Pavilion\Documents\GitHub\SimpleSSTool\x64\Debug\SimpleSSTool.exe

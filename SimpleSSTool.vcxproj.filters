@@ -63,7 +63,7 @@
     <ClCompile Include="Utility\Utility.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Checks\impl\PcaSvc.cpp">
+    <ClCompile Include="Checks\impl\Time.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -80,5 +80,38 @@
     <ClInclude Include="Utility\Utility.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="Debug\Check.obj" />
+    <Object Include="Debug\Javaw.obj" />
+    <Object Include="Debug\JNativeHook.obj" />
+    <Object Include="Debug\Logger.obj" />
+    <Object Include="Debug\SimpleSSTool.obj" />
+    <Object Include="Debug\Version.obj" />
+    <Object Include="Debug\Xray_check.obj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Debug\SimpleSSTool.exe.recipe" />
+    <None Include="Debug\SimpleSSTool.ilk" />
+    <None Include="Debug\vc142.idb" />
+    <None Include="Debug\vc142.pdb" />
+    <None Include="Debug\SimpleSSTool.tlog\CL.command.1.tlog" />
+    <None Include="Debug\SimpleSSTool.tlog\CL.read.1.tlog" />
+    <None Include="Debug\SimpleSSTool.tlog\CL.write.1.tlog" />
+    <None Include="Debug\SimpleSSTool.tlog\link.command.1.tlog" />
+    <None Include="Debug\SimpleSSTool.tlog\link.read.1.tlog" />
+    <None Include="Debug\SimpleSSTool.tlog\link.write.1.tlog" />
+    <None Include="Debug\SimpleSSTool.tlog\SimpleSSTool.lastbuildstate" />
+    <None Include=".vs\SimpleSSTool\FileContentIndex\4d1dc3a3-3010-456d-80bf-908ebd5cc966.vsidx" />
+    <None Include=".vs\SimpleSSTool\FileContentIndex\7ea8135d-7fa2-490f-90ea-ba2a1eb9846f.vsidx" />
+    <None Include=".vs\SimpleSSTool\FileContentIndex\cbd51447-4483-4bc6-8e6e-59a68f34795a.vsidx" />
+    <None Include=".vs\SimpleSSTool\FileContentIndex\cf37f924-ad4a-42e8-ac8c-65fec3e8a38c.vsidx" />
+    <None Include=".vs\SimpleSSTool\FileContentIndex\read.lock" />
+    <None Include=".vs\SimpleSSTool\v17\Browse.VC.db" />
+    <None Include=".vs\SimpleSSTool\v17\Browse.VC.db-shm" />
+    <None Include=".vs\SimpleSSTool\v17\Browse.VC.db-wal" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Debug\SimpleSSTool.log" />
   </ItemGroup>
 </Project>

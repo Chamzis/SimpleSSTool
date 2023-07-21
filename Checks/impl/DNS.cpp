@@ -4,15 +4,30 @@
 #include <iostream>
 #include <Windows.h>
 #include <vector>
-#include "../../Utility/Utility.h"
+
+DWORD get_service_pid(const std::string& service_name) { // For some reason it throws errors and sometimes it works??????
+    SC_HANDLE scm = OpenSCManagerA(nullptr, nullptr, NULL);
+    SC_HANDLE sc = OpenServiceA(scm, (LPCSTR)service_name.c_str(), SERVICE_QUERY_STATUS);
+
+    SERVICE_STATUS_PROCESS ssp = { 0 };
+    DWORD bytes_needed = 0;
+    QueryServiceStatusEx(sc, SC_STATUS_PROCESS_INFO, reinterpret_cast<LPBYTE>(&ssp), sizeof(ssp),
+        &bytes_needed);
+
+    CloseServiceHandle(sc);
+    CloseServiceHandle(scm);
+
+    return ssp.dwProcessId;
+}
 
 void checks::start_dns_check()
 {
 	logger("Starting DNS Check...", INFO);
 
+    bool pass = true;
 	std::string websites[] = {"unknowncheats.me", "dreamclient.xyz", "dopp.in"}; // Add more sites (I fogor ze hak names :skull:)
 
-    HANDLE handle = OpenProcess(PROCESS_ALL_ACCESS, FALSE, util::get_service_pid("dnscache"));
+    HANDLE handle = OpenProcess(PROCESS_ALL_ACCESS, FALSE, get_service_pid("Dnscache"));
 
     if (!handle) {
         logger("Couldn't establish handle for DNS!", log_type::ERR);
@@ -44,13 +59,16 @@ void checks::start_dns_check()
                 string.end());
 
             for (std::string s : websites)
-                if (string.find(s) != std::string::npos)
+                if (string.find(s) != std::string::npos) {
                     logger("Found Blacklisted Website in DNSCache!", log_type::WARNING);
+                    pass = false;
+                }
+                    
 
             Sleep(10);
         }
     }
 
-    CloseHandle(handle);
-    p = nullptr;
+    if(pass)
+        checks::passed++;
 }

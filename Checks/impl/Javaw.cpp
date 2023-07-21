@@ -14,8 +14,9 @@ using namespace std;
 
 void checks::start_javaw_scanner()
 {
-    logger("Starting Javaw scanner!", log_type::INFO);
+    logger("Starting Javaw Check...", log_type::INFO);
 
+    bool pass = true;
     const char* strings[] = {
         "Minecraft",
     };
@@ -44,6 +45,7 @@ void checks::start_javaw_scanner()
 
             if (buffer.size() > 1000000)
                 continue;
+            
 
             std::string string = std::string(buffer.data(), buffer.size());
 
@@ -55,12 +57,16 @@ void checks::start_javaw_scanner()
                 string.end());
 
             for (std::string s : strings)
-                if (string.find(s) != std::string::npos)
+                if (string.find(s) != std::string::npos) {
                     logger("Found BlackListed String in Javaw!", log_type::ERR);
+                    pass = false;
+                }
+                    
 
             Sleep(10);
         }
     }
 
-    CloseHandle(handle);
+    if (pass)
+        checks::passed++;
 }

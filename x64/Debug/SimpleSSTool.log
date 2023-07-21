@@ -1,5 +1,16 @@
-﻿  JNativeHook.cpp
+﻿  Check.cpp
+  DNS.cpp
+  Javaw.cpp
+C:\Users\Pavilion\Desktop\SimpleSSTool\Checks\impl\Javaw.cpp(1,1): warning C4005: '_CRT_SECURE_NO_WARNINGS': macro redefinition
+C:\Users\Pavilion\Desktop\SimpleSSTool\Checks\impl\Javaw.cpp(1,1): message : '_CRT_SECURE_NO_WARNINGS' previously declared on the command line
+  JNativeHook.cpp
+  SimpleSSTool.cpp
+  Logger.cpp
+  Version.cpp
+C:\Users\Pavilion\Desktop\SimpleSSTool\Checks\impl\Version.cpp(1,1): warning C4005: '_CRT_SECURE_NO_WARNINGS': macro redefinition
+C:\Users\Pavilion\Desktop\SimpleSSTool\Checks\impl\Version.cpp(1,1): message : '_CRT_SECURE_NO_WARNINGS' previously declared on the command line
+  Xray_check.cpp
   Utility.cpp
   Generating Code...
-C:\Users\Pavilion\Documents\GitHub\SimpleSSTool\Utility\Utility.cpp(34): warning C4172: returning address of local variable or temporary: wchar
-  SimpleSSTool.vcxproj -> C:\Users\Pavilion\Documents\GitHub\SimpleSSTool\x64\Debug\SimpleSSTool.exe
+C:\Users\Pavilion\Desktop\SimpleSSTool\Utility\Utility.cpp(30): warning C4172: returning address of local variable or temporary: wchar
+Debug\Check.obj : fatal error LNK1112: module machine type 'x86' conflicts with target machine type 'x64'
