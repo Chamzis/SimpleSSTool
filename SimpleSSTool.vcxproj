@@ -148,6 +148,7 @@
     <ClCompile Include="Checks\impl\Javaw.cpp" />
     <ClCompile Include="Checks\impl\JNativeHook.cpp" />
     <ClCompile Include="Checks\impl\Time.cpp" />
+    <ClCompile Include="miniz\miniz.c" />
     <ClCompile Include="SimpleSSTool.cpp" />
     <ClCompile Include="Logger\Logger.cpp" />
     <ClCompile Include="Checks\impl\Version.cpp" />
@@ -157,6 +158,7 @@
   <ItemGroup>
     <ClInclude Include="Checks\Check.h" />
     <ClInclude Include="Logger\Logger.h" />
+    <ClInclude Include="miniz\miniz.h" />
     <ClInclude Include="SimpleSSTool.h" />
     <ClInclude Include="Utility\Utility.h" />
   </ItemGroup>

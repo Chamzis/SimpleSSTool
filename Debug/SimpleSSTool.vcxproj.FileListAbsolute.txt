@@ -1,1 +1,2 @@
 C:\Users\Pavilion\Desktop\SimpleSSTool\Debug\SimpleSSTool.exe
+C:\Users\Pavilion\Documents\GitHub\SimpleSSTool\Debug\SimpleSSTool.exe

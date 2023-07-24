@@ -66,6 +66,9 @@
     <ClCompile Include="Checks\impl\Time.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="miniz\miniz.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SimpleSSTool.h">
@@ -78,6 +81,9 @@
       <Filter>Source Files\CheckThread</Filter>
     </ClInclude>
     <ClInclude Include="Utility\Utility.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="miniz\miniz.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
