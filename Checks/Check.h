@@ -13,4 +13,6 @@ namespace checks {
 	void start_version_check();
 	void start_xray_check();
 	void start_time_check();
+	void start_pcaclient_check();
+	void start_dps_check();
 }

@@ -19,7 +19,7 @@ using namespace std;
 
 void checks::start_xray_check()
 {
-    logger("Starting XRay Check", log_type::INFO);
+    logger("Starting XRay Check...", log_type::INFO);
 
     // Basic check
     bool p1 = true;

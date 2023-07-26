@@ -145,8 +145,10 @@
   <ItemGroup>
     <ClCompile Include="Checks\Check.cpp" />
     <ClCompile Include="Checks\impl\DNS.cpp" />
+    <ClCompile Include="Checks\impl\DPS.cpp" />
     <ClCompile Include="Checks\impl\Javaw.cpp" />
     <ClCompile Include="Checks\impl\JNativeHook.cpp" />
+    <ClCompile Include="Checks\impl\PCAClient.cpp" />
     <ClCompile Include="Checks\impl\Time.cpp" />
     <ClCompile Include="miniz\miniz.c" />
     <ClCompile Include="SimpleSSTool.cpp" />

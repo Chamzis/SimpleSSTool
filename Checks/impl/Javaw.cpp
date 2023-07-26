@@ -18,7 +18,11 @@ void checks::start_javaw_scanner()
 
     bool pass = true;
     const char* strings[] = {
-        "Minecraft",
+        "KillAura",
+        "Destruct",
+        "Reach",
+        "AutoClicker",
+
     };
 
     DWORD pID = 0;
@@ -28,8 +32,7 @@ void checks::start_javaw_scanner()
 
     if (!handle) {
         logger("Couldn't establish handle for Minecraft! (Minecraft not launched?)", log_type::ERR);
-        system("PAUSE");
-        exit(1);
+        return;
     }
 
     unsigned char* p = NULL;
@@ -52,7 +55,7 @@ void checks::start_javaw_scanner()
             string.erase(
                 remove_if(
                     string.begin(), string.end(), [](char c) {
-                        return !(c >= 32 && c < 126); // Checks if it's a valid char byte
+                        return !(c >= 32 && c < 126) || c == 10 || c == 13 || c == 9; // Checks if it's a valid char byte
                     }),
                 string.end());
 

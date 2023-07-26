@@ -256,7 +256,7 @@ void checks::start_time_check() {
     }
 
     ULONGLONG currentTime_ = GetTickCount64() * 10000ULL;
-    ULONGLONG timeDifference_ = currentTime_ - startTime_;
+    ULONGLONG timeDifference_ = currentTime__ - startTime_;
     double secondsSinceStart_ = static_cast<double>(timeDifference_) / 10000000.0;
 
     if (secondsSinceStart_ < 3600) { // If it was restarted under 1 hour
@@ -264,6 +264,31 @@ void checks::start_time_check() {
     }
     else {
         logger("DNSCache runtime was checked", log_type::INFO);
+        checks::passed++;
+    }
+
+
+
+
+
+    // DPS
+    DWORD processID_ = GetServiceProcessId(L"dps");
+
+    ULONGLONG startTime__ = GetProcessStartTime(processID);
+    if (startTime__ == 0) {
+        logger("Failed to get the start time of DPS!", log_type::ERR);
+        return;
+    }
+
+    ULONGLONG currentTime___ = GetTickCount64() * 10000ULL;
+    ULONGLONG timeDifference__ = currentTime___ - startTime__;
+    double secondsSinceStart__ = static_cast<double>(timeDifference__) / 10000000.0;
+
+    if (secondsSinceStart__ < 3600) { // If it was restarted under 1 hour
+        logger("DPS was restarted less than an hour ago!", log_type::WARNING);
+    }
+    else {
+        logger("DPS runtime was checked", log_type::INFO);
         checks::passed++;
     }
 }

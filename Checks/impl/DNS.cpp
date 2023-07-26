@@ -54,7 +54,7 @@ void checks::start_dns_check()
             string.erase(
                 remove_if(
                     string.begin(), string.end(), [](char c) {
-                        return !(c >= 32 && c < 126);
+                        return !(c >= 32 && c < 126) || c == 10 || c == 13 || c == 9;
                     }),
                 string.end());
 

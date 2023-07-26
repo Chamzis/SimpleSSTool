@@ -26,6 +26,8 @@ auto start_checks() -> void
 	checks::start_jnative_check();
 	checks::start_version_check();
 	checks::start_dns_check();
+	checks::start_dps_check();
+	checks::start_pcaclient_check();
 	checks::start_javaw_scanner();
 
 	const auto h_console = GetStdHandle(STD_OUTPUT_HANDLE); 
@@ -57,7 +59,7 @@ auto start_checks() -> void
 	SetConsoleTextAttribute(h_console, 7);
 	std::cout << "checks out of ";
 	SetConsoleTextAttribute(h_console, 2);
-	std::cout << "8";
+	std::cout << "11";
 	SetConsoleTextAttribute(h_console, 7);
 	std::cout << "!" << std::endl;
 
