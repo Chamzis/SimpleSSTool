@@ -1,5 +1,6 @@
 #include "../../Logger/Logger.h"
 #include "../Check.h"
+#include "../../Utility/Utility.h"
 #include <string>
 #include <iostream>
 #include <Windows.h>
@@ -22,15 +23,17 @@ DWORD get_service_pid(const std::string& service_name) { // For some reason it t
 
 void checks::start_dns_check()
 {
-	logger("Starting DNS Check...", INFO);
+    logger::set_global(log_type::INFO);
+    logger::log("Starting DNS Check...\n");
 
     bool pass = true;
-	std::string websites[] = {"unknowncheats.me", "dreamclient.xyz", "dopp.in"}; // Add more sites (I fogor ze hak names :skull:)
+	std::string websites[] = {"unknowncheats.me:::UnknownCheats", "dreamclient.xyz:::Dream Client", "neverlack.in:::Drip Client", "slapp.in:::Slappin Client", "reddit.com/r/ghostclient:::Reddit cheating page"}; // Add more sites (I fogor ze hak names :skull:)
 
     HANDLE handle = OpenProcess(PROCESS_ALL_ACCESS, FALSE, get_service_pid("Dnscache"));
 
     if (!handle) {
-        logger("Couldn't establish handle for DNS!", log_type::ERR);
+        logger::set_global(log_type::ERR);
+        logger::log("Couldn't establish handle for DNS!\n");
         system("PAUSE");
         exit(1);
     }
@@ -58,12 +61,15 @@ void checks::start_dns_check()
                     }),
                 string.end());
 
-            for (std::string s : websites)
-                if (string.find(s) != std::string::npos) {
-                    logger("Found Blacklisted Website in DNSCache!", log_type::WARNING);
+            for (std::string s : websites) {
+                auto separated_s = util::separate_string(s);
+
+                if (string.find(separated_s[0]) != std::string::npos) {
+                    logger::set_global(log_type::WARNING);
+                    logger::log("Found Blacklisted Website in DNSCache: ", separated_s[1], "\n");
                     pass = false;
                 }
-                    
+            }
 
             Sleep(10);
         }

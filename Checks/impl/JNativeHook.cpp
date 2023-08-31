@@ -9,7 +9,8 @@ using namespace std;
 
 void checks::start_jnative_check() 
 {
-    logger("Starting JNativeHook Check...", log_type::INFO);
+    logger::set_global(log_type::INFO);
+    logger::log("Starting JNativeHook Check...\n");
 
     bool p = true;
     char* temp_path;
@@ -22,7 +23,8 @@ void checks::start_jnative_check()
     if (listFiles.size() != 0) 
         for (string s : listFiles) 
             if (s.find("JNativeHook") != std::string::npos) {
-                logger("Found JNativeHook in %temp% ", log_type::ERR);
+                logger::set_global(log_type::ERR);
+                logger::log("Found JNativeHook in %temp%\n");
                 p = false;
             }
                 

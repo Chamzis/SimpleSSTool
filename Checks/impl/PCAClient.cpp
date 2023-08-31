@@ -7,18 +7,16 @@
 #include <regex>
 #include <iostream>
 
-bool is_char(byte n) {
-	return (n >= 32 && n <= 126) || n == 10 || n == 13 || n == 9;
-}
-
 void checks::start_pcaclient_check() {
-	logger("Starting PCAClient Check...", log_type::INFO);
+	logger::set_global(log_type::INFO);
+	logger::log("Starting PCAClient Check...\n");
 
 	bool pass = true;
 
 	HWND explorerWindow = FindWindow(L"Shell_TrayWnd", NULL);
 	if (explorerWindow == NULL) {
-		logger("Windows Explorer wasn't found!", log_type::ERR);
+		logger::set_global(log_type::ERR);
+		logger::log("Windows Explorer wasn't found!\n");
 		return;
 	}
 
@@ -27,7 +25,8 @@ void checks::start_pcaclient_check() {
 	HANDLE handle = OpenProcess(PROCESS_ALL_ACCESS, FALSE, id);
 
 	if (!handle) {
-		logger("Couldn't establish handle for explorer.exe!", log_type::ERR);
+		logger::set_global(log_type::ERR);
+		logger::log("Couldn't establish handle for explorer.exe!\n");
 		system("PAUSE");
 		exit(1);
 	}
@@ -73,7 +72,9 @@ void checks::start_pcaclient_check() {
 	for (std::string string : all_strings) {
 		std::string::const_iterator searchStart(string.cbegin());
 		while (std::regex_search(searchStart, string.cend(), matches, regex)) {
-			std::cout << matches[0].str().substr(10, matches[0].str().length()) << std::endl;
+			//std::cout << matches[0].str().substr(10, matches[0].str().length()) << std::endl;
+			logger::set_global(log_type::INFO);
+			logger::log("PcaClient >> ", matches[0].str().substr(10, matches[0].str().length()), "\n");
 			searchStart = matches[0].second;
 		}
 	}

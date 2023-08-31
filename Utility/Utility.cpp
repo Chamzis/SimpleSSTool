@@ -20,7 +20,7 @@ std::string wchar_t2string(const wchar_t* wchar)
 wchar_t* string2wchar_t(const string& str)
 {
     wchar_t wchar[260];
-    int index = 0;
+    size_t index = 0;
     while (index < str.size())
     {
         wchar[index] = (wchar_t)str[index];
@@ -46,4 +46,14 @@ std::vector<std::string> util::files_in_folder(std::string folder)
         FindClose(hFind);
     }
     return names;
+}
+
+std::vector<std::string> util::separate_string(std::string string) {
+    std::vector<std::string> separation;
+    size_t separatorPos = string.find(":::"); // This will be constant in every string
+
+    separation.push_back(string.substr(0, separatorPos)); // The actual string that needs to be searched ( separate_string("unknowncheats.me")[0] )
+    separation.push_back(string.substr(separatorPos + 3)); // The masked string that is displayed ( separate_string("unknowncheats.me")[1] )
+
+    return separation;
 }

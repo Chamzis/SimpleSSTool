@@ -1,9 +1,4 @@
-﻿  Check.cpp
-Debug\Check.obj : warning LNK4042: object specified more than once; extras ignored
-Debug\Javaw.obj : warning LNK4042: object specified more than once; extras ignored
-Debug\JNativeHook.obj : warning LNK4042: object specified more than once; extras ignored
-Debug\Logger.obj : warning LNK4042: object specified more than once; extras ignored
-Debug\SimpleSSTool.obj : warning LNK4042: object specified more than once; extras ignored
-Debug\Version.obj : warning LNK4042: object specified more than once; extras ignored
-Debug\Xray_check.obj : warning LNK4042: object specified more than once; extras ignored
+﻿  DNS.cpp
+  DPS.cpp
+  Generating Code...
   SimpleSSTool.vcxproj -> C:\Users\Pavilion\Documents\GitHub\SimpleSSTool\Debug\SimpleSSTool.exe

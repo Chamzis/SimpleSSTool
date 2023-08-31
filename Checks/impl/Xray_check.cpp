@@ -19,7 +19,8 @@ using namespace std;
 
 void checks::start_xray_check()
 {
-    logger("Starting XRay Check...", log_type::INFO);
+    logger::set_global(log_type::INFO);
+    logger::log("Starting XRay Check...\n");
 
     // Basic check
     bool p1 = true;
@@ -34,7 +35,8 @@ void checks::start_xray_check()
     if (listFiles.size() != 0)
         for (string s : listFiles)
             if (s.find("xray") != std::string::npos || s.find("Xray") != std::string::npos || s.find("XRay") != std::string::npos) {
-                logger("Found XRay in %appdata% (.zip)", log_type::WARNING);
+                logger::set_global(log_type::ERR);
+                logger::log("Found XRay in %appdata% (.zip)\n");
                 p1 = false;
             }
 
@@ -48,7 +50,8 @@ void checks::start_xray_check()
     if (folderList.size() != 0)
         for (std::filesystem::path pa : folderList)
             if (pa.string().find("xray") != std::string::npos || pa.string().find("Xray") != std::string::npos || pa.string().find("XRay") != std::string::npos) {
-                logger("Found XRay in %appdata% (folder)", log_type::WARNING);
+                logger::set_global(log_type::ERR);
+                logger::log("Found XRay in %appdata% (folder)\n");
                 p1 = false;
             }
 
@@ -86,15 +89,16 @@ void checks::start_xray_check()
             for (int i = 0; i < numFiles; ++i) {
                 status = mz_zip_reader_file_stat(&zipArchive, i, &fileStat);
                 if (!status) {
-                    logger("Failed to get info from the file...", log_type::ERR);
+                    logger::set_global(log_type::ERR);
+                    logger::log("Failed to get info from the file...\n");
                     mz_zip_reader_end(&zipArchive);
                     return;
                 }
 
                 std::string fileName = fileStat.m_filename;
                 if (fileStat.m_uncomp_size < 1000000 && (fileName.size() > 5 && fileName.substr(fileName.size() - 5) == ".json")) {
-                    logger("Found XRay in %appdata% (file size)", log_type::WARNING);
-                    cout << "Name of resourcepack to check: " << s << endl;
+                    logger::set_global(log_type::WARNING);
+                    logger::log("Found XRay in %appdata% (file size): ", s, "\n");
                     break;
                 }
             }

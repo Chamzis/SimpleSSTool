@@ -122,6 +122,7 @@
     <None Include=".vs\SimpleSSTool\v17\Browse.VC.db" />
     <None Include=".vs\SimpleSSTool\v17\Browse.VC.db-shm" />
     <None Include=".vs\SimpleSSTool\v17\Browse.VC.db-wal" />
+    <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Debug\SimpleSSTool.log" />

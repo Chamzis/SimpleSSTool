@@ -193,6 +193,7 @@
     <None Include="Debug\SimpleSSTool.tlog\SimpleSSTool.lastbuildstate" />
     <None Include="Debug\vc142.idb" />
     <None Include="Debug\vc142.pdb" />
+    <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Debug\SimpleSSTool.log" />

@@ -14,7 +14,8 @@ using namespace std;
 
 void checks::start_javaw_scanner()
 {
-    logger("Starting Javaw Check...", log_type::INFO);
+    logger::set_global(log_type::INFO);
+    logger::log("Starting Javaw Check...\n");
 
     bool pass = true;
     const char* strings[] = {
@@ -31,7 +32,8 @@ void checks::start_javaw_scanner()
     HANDLE handle = OpenProcess(PROCESS_ALL_ACCESS, FALSE, pID);
 
     if (!handle) {
-        logger("Couldn't establish handle for Minecraft! (Minecraft not launched?)", log_type::ERR);
+        logger::set_global(log_type::ERR);
+        logger::log("Couldn't establish handle for Minecraft! (Minecraft not launched or using client?)\n");
         return;
     }
 
@@ -61,7 +63,8 @@ void checks::start_javaw_scanner()
 
             for (std::string s : strings)
                 if (string.find(s) != std::string::npos) {
-                    logger("Found BlackListed String in Javaw!", log_type::ERR);
+                    logger::set_global(log_type::ERR);
+                    logger::log("Found BlackListed String in Javaw: ", s, "\n");
                     pass = false;
                 }
                     
