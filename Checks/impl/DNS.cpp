@@ -34,8 +34,7 @@ void checks::start_dns_check()
     if (!handle) {
         logger::set_global(log_type::ERR);
         logger::log("Couldn't establish handle for DNS!\n");
-        system("PAUSE");
-        exit(1);
+        return;
     }
 
     unsigned char* p = NULL;

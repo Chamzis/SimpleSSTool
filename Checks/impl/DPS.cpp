@@ -49,8 +49,7 @@ void checks::start_dps_check() {
     if (!handle) {
         logger::set_global(log_type::ERR);
         logger::log("Couldn't establish handle for DPS!\n");
-        system("PAUSE");
-        exit(1);
+        return;
     }
 
     unsigned char* p = NULL;

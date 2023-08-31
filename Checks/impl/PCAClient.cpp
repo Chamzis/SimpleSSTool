@@ -11,8 +11,6 @@ void checks::start_pcaclient_check() {
 	logger::set_global(log_type::INFO);
 	logger::log("Starting PCAClient Check...\n");
 
-	bool pass = true;
-
 	HWND explorerWindow = FindWindow(L"Shell_TrayWnd", NULL);
 	if (explorerWindow == NULL) {
 		logger::set_global(log_type::ERR);
@@ -27,16 +25,12 @@ void checks::start_pcaclient_check() {
 	if (!handle) {
 		logger::set_global(log_type::ERR);
 		logger::log("Couldn't establish handle for explorer.exe!\n");
-		system("PAUSE");
-		exit(1);
+		return;
 	}
 
 	unsigned char* p = NULL;
 	MEMORY_BASIC_INFORMATION info;
 	std::vector<std::string> all_strings;
-
-	byte first = 0, second = 0;
-	bool isUnicode = false;
 
 	// Memory dump of explorer then regex search lol
 	for (p = NULL; VirtualQueryEx(handle, p, &info, sizeof(info)) == sizeof(info); p += info.RegionSize) {
@@ -72,7 +66,6 @@ void checks::start_pcaclient_check() {
 	for (std::string string : all_strings) {
 		std::string::const_iterator searchStart(string.cbegin());
 		while (std::regex_search(searchStart, string.cend(), matches, regex)) {
-			//std::cout << matches[0].str().substr(10, matches[0].str().length()) << std::endl;
 			logger::set_global(log_type::INFO);
 			logger::log("PcaClient >> ", matches[0].str().substr(10, matches[0].str().length()), "\n");
 			searchStart = matches[0].second;
